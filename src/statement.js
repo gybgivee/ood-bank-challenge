@@ -13,26 +13,17 @@ class Statement {
 
 
     }
-    printTransaction() {
+    printStatement() {
         const header = "date || credit || debit || balance " + "\n";
         const between = " || ";
         let main = "";
         for (const eachTransaction of this.#Transaction) {
-            main += eachTransaction.date + between;
-            const key = Object.keys(eachTransaction);
+           
+            //const key = Object.keys(eachTransaction);
 
-            console.log('key: ', key, typeof key);
-            if (key[1] === "credit") {
-                console.log('');
-                main += eachTransaction.credit + between;
-            } else {
-                main += '-' + between;
-            }
-            if (key[1] === "debit") {
-                main += eachTransaction.debit + between;
-            } else {
-                main += '-' + between;
-            }
+            main += eachTransaction.date + between;
+            main += eachTransaction.credit + between;
+            main += eachTransaction.debit + between;
             main += eachTransaction.total + "\n";
 
         }
@@ -40,7 +31,7 @@ class Statement {
 
         return allTransactions;
     }
-    getTransaction() {
+    getStatement() {
         return this.#Transaction;
     }
 }
