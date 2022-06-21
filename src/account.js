@@ -8,8 +8,8 @@ class Account {
         this.#balance=0;
     }
     
-    deposit(amount) {
-       const date = this.#getTodayDate();
+    deposit(date,amount) {
+       //const date = this.#getTodayDate();
      
     
         if (amount < 0) {
@@ -18,12 +18,12 @@ class Account {
         }
       
         const total = this.#updateBalance(amount);
-        const myTransaction = new Transaction(date,amount,0,total);
+        const myTransaction = new Transaction(date,0,amount,total);
          return myTransaction.getTransaction();
        
     }
-    withdrawal(amount) {
-        const date = this.#getTodayDate();
+    withdrawal(date,amount) {
+        //const date = this.#getTodayDate();
     
         const currentBalance = this.#balance;
         if (amount > currentBalance) {
@@ -32,7 +32,7 @@ class Account {
         }
         const withdraw = amount*-1;
         const total = this.#updateBalance(withdraw)
-        const myTransaction = new Transaction(date,0,amount,total);
+        const myTransaction = new Transaction(date,amount,0,total);
          return myTransaction.getTransaction();
         
     }
@@ -57,9 +57,8 @@ const Statement = require('./statement');
 const myStatement = new Statement();
 const account = new Account();
 
-myStatement.addTransaction(account.deposit(100));
-myStatement.addTransaction(account.withdrawal(50));
-myStatement.addTransaction(account.deposit(10));
-
+myStatement.addTransaction(account.deposit('10/01/2022',1000));
+myStatement.addTransaction(account.deposit('13/01/2022',2000));
+myStatement.addTransaction(account.withdrawal('14/01/2022',500));
 console.log(myStatement.getStatement());
 console.log(myStatement.printStatement());

@@ -17,7 +17,8 @@ class Statement {
         const header = "date || credit || debit || balance " + "\n";
         const between = " || ";
         let main = "";
-        for (const eachTransaction of this.#Transaction) {
+        const reverseTransactions = this.#Transaction.reverse();
+        for (const eachTransaction of reverseTransactions) {
            
             //const key = Object.keys(eachTransaction);
 
