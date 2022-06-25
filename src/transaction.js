@@ -11,8 +11,11 @@ class Transaction{
         this.#debit = debit;
         this.#total = total;
     }
+    
     getTransaction(){
         return {date:this.#date,debit:this.#debit,credit:this.#credit,total:this.#total}
     }
+    
+   
 }
 module.exports = Transaction;
